@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Joe's Hotdogs</title>
+</head>
+
+<body>
+	<h1>Welcome to Joe's Hotdogs!</h1>
+	
+	<script language="javascript">
+		var hotdogs=0, fries=0, sodas=0;
+		
+		hotdogs = prompt("How many hotdogs?", "1");
+		var dogsPrice = 3.25 * hotdogs;
+		var dogsPriceDisplay = dogsPrice.toFixed(2);
+		document.write("# of Hotdogs: " + hotdogs + " at $3.25 per hotdog is $" + dogsPriceDisplay + "</br>");
+		
+		fries=prompt("How many orders of fries?", "1");
+		var friesPrice = 2 * fries;
+		var friesPriceDisplay = friesPrice.toFixed(2);
+		document.write("# of Orders of Fries: " + fries + " at $2.00 per order of fries is $" + friesPriceDisplay + "</br>");
+		
+		sodas=prompt("How many sodas?", "1");
+		var sodasPrice = 1.5 * sodas;
+		var sodasPriceDisplay = sodasPrice.toFixed(2);
+		document.write("# of Sodas: " + sodas + "at $1.50 per sodas is $" + sodasPriceDisplay + "</br>");
+		
+		var subtotal = dogsPrice + friesPrice + sodasPrice;
+		
+		if (subtotal >= 20){
+			subtotal = (subtotal - (subtotal*.1));
+			document.write("You qualify for 10% off of your order! </br>");
+		}
+		
+		var subtotalDisplay = subtotal.toFixed(2);
+		document.write("Subtotal: $" + subtotalDisplay + "</br>");
+		
+		var tax = Math.round(.0625 * subtotal * 100) / 100;
+		var taxDisplay = tax.toFixed(2);
+		document.write("Tax: $" + taxDisplay + "</br>");
+		
+		var total = Math.round((tax + subtotal) * 100) / 100;
+		
+		var totalDisplay = total.toFixed(2);
+		
+		document.write("<b>Total</b>: $" + totalDisplay);
+	
+	</script>
+</body>
+</html>

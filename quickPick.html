@@ -1,0 +1,108 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>quickPick</title>
+</head>
+
+<body>
+	<script language="javascript">
+		
+		//create 5 random numbers
+		var ran1=(Math.random()*47 + 1);
+		ran1=parseInt(ran1);
+		var ran2=(Math.random()*47 + 1);
+		ran2=parseInt(ran2);
+		var ran3=(Math.random()*47 + 1);
+		ran3=parseInt(ran3);
+		var ran4=(Math.random()*47 + 1);
+		ran4=parseInt(ran4);
+		var ran5=(Math.random()*47 + 1);
+		ran5=parseInt(ran5);
+		
+		//put random numbers into an array
+		randomNumbers = new Array(ran1, ran2, ran3, ran4, ran5);
+		
+		//create the lucky ball
+		var luckyBall=(Math.random()*17 + 1);
+		luckyBall=parseInt(luckyBall);
+		
+		
+		//sort random numbers array
+		randomNumbers.sort(function(a, b){return a-b});
+		
+		//display quickpick and lucky ball
+		document.write("The quickpick numbers are:");
+		for(i=0; i<5; i++){
+			document.write(" " + randomNumbers[i]);
+		}
+		document.write("<br>The lucky ball number is: " + luckyBall);
+		
+		//take in numbers from user
+		var numInput=prompt("Please enter the first 5 winning numbers from the MA lottery: ", "");
+		var lBInput=prompt("Please enter the lucky ball number from the MA lottery: ", "");
+		
+		//display user input
+		var substrStart=0;
+		var inputArray = new Array();
+		for(j=0; j<=numInput.length; j++){
+			if(numInput[j]==" "||j==numInput.length){
+				newEl=numInput.substring(substrStart, j);
+				substrStart=j+1;
+				inputArray.push(newEl);
+			}
+		}
+		document.write("<br><br>The winning numbers are: ");
+		for(j=0; j<5; j++){
+			document.write(inputArray[j] + " ");
+		}
+		document.write("<br>The lucky ball number is: " + lBInput + "<br>");
+		
+		//count up how many that match
+		var match=0;
+		randomNumbers.forEach((x, y) => {
+			if (inputArray.includes(x.toString())) match++;
+		})
+		document.write("<br>");
+		
+		//determine prize
+		if(match==0){
+			if(lBInput==luckyBall){
+				document.write("<br>You win! Your prize is: $4");}
+			if(lBInput!=luckyBall){
+				document.write("<br>Better luck next time!");}
+		}
+		if(match==1){
+			if(lBInput==luckyBall){
+				document.write("<br>You win! Your prize is: $6");}
+			if(lBInput!=luckyBall){
+				document.write("<br>Better luck next time!");}
+		}
+		if(match==2){
+			if(lBInput==luckyBall){
+				document.write("<br>You win! Your prize is: $25");}
+			if(lBInput!=luckyBall){
+				document.write("<br>You win! Your prize is: $3");}
+		}
+		if(match==3){
+			if(lBInput==luckyBall){
+				document.write("<br>You win! Your prize is: $150");}
+			if(lBInput!=luckyBall){
+				document.write("<br>You win! Your prize is: $20");}
+		}
+		if(match==4){
+			if(lBInput==luckyBall){
+				document.write("<br>You win! Your prize is: $5,000");}
+			if(lBInput!=luckyBall){
+				document.write("<br>You win! Your prize is: $200");}
+		}
+		if(match==5){
+			if(lBInput==luckyBall){
+				document.write("<br>You win! Your prize is: $7,000 a WEEK for LIFE");}
+			if(lBInput!=luckyBall){
+				document.write("<br>You win! Your prize is: $25,000 a YEAR for LIFE");}
+		}
+		
+	</script>
+</body>
+</html>
